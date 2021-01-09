@@ -27,7 +27,7 @@ function DragNDrop() {
         (
             typeof config !== 'undefined'
              &&
-            axios.post("https://reqres.in/api/users", config).then((response) => {
+            axios.post("http://localhost:9090/api/configs", JSON.parse(config)).then((response) => {
                 console.log("Config Data Sent")
                 console.log(response)
             })
@@ -38,7 +38,7 @@ function DragNDrop() {
         (
             typeof config !== 'undefined'
              &&
-            console.log("Changes in File Detected")
+            console.log("Changes in File Detected", typeof JSON.parse(config))
             // axios.post("https://reqres.in/api/users", config).then((response) => {
             //     console.log("Config Data Sent")
             //     console.log(response)

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useDropzone} from 'react-dropzone';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 function DragNDrop() {
 
@@ -54,6 +55,7 @@ function DragNDrop() {
             </div>
             <p>{config}</p>
             <button onClick={sendConfigData}>Send Data</button>
+            <Link to="/analytics"><button>Analytics</button></Link>
         </div>
         
     )

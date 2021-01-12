@@ -23,7 +23,7 @@ function BarChart() {
         labels: ["Motor Insurance", "Travel Insurance", "Health Insurance", "Term Life Insurance"],
         datasets: [
             {
-                label: "Partners for Categories",
+                label: "Partners Available",
                 data: [2,2,2,3],
                 // borderColor: ['rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)'],
                 // backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 0.2)']

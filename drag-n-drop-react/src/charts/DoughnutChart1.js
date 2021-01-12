@@ -27,7 +27,7 @@ function DoughnutChart1() {
       }
 
     return (
-        <div style={{width: "40%", margin: 'auto'}}>
+        <div style={{width: "40%"}}>
             <Doughnut data={data} options={options}/> 
         </div>
     )

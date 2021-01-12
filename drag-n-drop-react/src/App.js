@@ -1,11 +1,17 @@
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Analytics from './Analytics';
 import './App.css';
 import DragNDrop from './DragNDrop';
 
 function App() {
   return (
     <div className="app">
-      <h1 style={{textAlign: 'center'}}>Drag N Drop Admin Page</h1>
-      <DragNDrop/>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={DragNDrop}></Route>
+          <Route path="/analytics" exact component={Analytics}></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -48,7 +48,7 @@ function DoughnutChart2() {
     const options = {
         title: {
           display: true,
-          text: 'Doughnut Chart'
+          text: 'Insurances Bought'
         }
       }
 

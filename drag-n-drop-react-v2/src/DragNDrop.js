@@ -155,7 +155,7 @@ function DragNDrop() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <ReactJson src={JSON.parse(config)}/>
+            {typeof config !== 'undefined' ? <ReactJson src={JSON.parse(config)}/> : <pre>No file added yet</pre>}
           </Typography>
         </AccordionDetails>
       </Accordion>

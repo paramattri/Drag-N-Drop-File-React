@@ -34,6 +34,10 @@ function BarChart2() {
           {
             "partner": "Bajaj Allianz",
             "count": 2
+          },
+          {
+            "partner": "HDFC ERGO",
+            "count": 2
           }
         ]
       },

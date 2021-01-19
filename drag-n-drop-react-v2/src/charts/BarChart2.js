@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
 import axios from 'axios'
+import { Grid } from '@material-ui/core'
 
 function BarChart2() {
 
@@ -53,11 +54,29 @@ function BarChart2() {
             "count": 2
           }
         ]
+      },
+      {
+        "category": "Health Insurance",
+        "partners": [
+          {
+            "partner": "Tata AIG",
+            "count": 2
+          },
+          {
+            "partner": "HDFC ERGO",
+            "count": 6
+          }
+        ]
       }
+
     ]
 
     const barChart = () => {
-      return <Bar data={chartData} options={options}/>
+      return (
+        <Grid item xs={12} sm={4}>
+            <Bar data={chartData} options={options}/>
+        </Grid>
+      )
     }
 
     const chart = (data, index) => {
@@ -171,11 +190,17 @@ function BarChart2() {
       }
 
     return (
-        <div style={{width: "40%", margin: 'auto'}}>
-          {/* <Bar data={data} options={options}/>
-          {console.log("Final Chart Data-->", chartData)} */}
+        // <div style={{ width: '80%', margin: 'auto', display: 'flex'}}>
+        //   {/* <Bar data={data} options={options}/>
+        //   {console.log("Final Chart Data-->", chartData)} */}
+        //   {dummyData.map((data, index) => chart(data, index))}
+        // </div>
+        // <div style={{ display: 'flex'}}>
+        //   {dummyData.map((data, index) => chart(data, index))}
+        // </div>
+        <Grid container style={{display: 'flex'}}>
           {dummyData.map((data, index) => chart(data, index))}
-        </div>
+        </Grid>
     )
 }
 

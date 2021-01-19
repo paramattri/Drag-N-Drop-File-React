@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Doughnut } from 'react-chartjs-2'
@@ -57,9 +58,13 @@ function DoughnutChart2() {
     }, [])
 
     return (
-        <div style={{width: "40%"}}>
+        // <div style={{width: "40%"}}>
+        //     <Doughnut data={chartData} options={options}/>
+        // </div>
+        <Grid item xs={12} sm={6}>
             <Doughnut data={chartData} options={options}/>
-        </div>
+        </Grid>
+
     )
 }
 

@@ -4,17 +4,29 @@ import DoughnutChart1 from './charts/DoughnutChart1'
 import DoughnutChart2 from './charts/DoughnutChart2'
 import AppBar from './AppBar'
 import BarChart2 from './charts/BarChart2'
+import { Grid } from '@material-ui/core'
 
 function Analytics() {
     return (
         <div>
             <AppBar/>
-            <BarChart/>
-            <BarChart2/>
-            <div className="doughnutCharts" style={{display: 'flex', justifyContent: 'center', marginTop: "30px"}}>
+            <Grid container style={{display: 'flex'}}>
+                <Grid item xs={0} sm={2}></Grid>
+                <Grid item xs={12} sm={8}>
+                <BarChart/>
+                <BarChart2/>
+                <Grid container style={{display: 'flex'}}>
+                    <DoughnutChart1/>
+                    <DoughnutChart2/>
+                </Grid>
+                </Grid>
+                <Grid item xs={0} sm={2}></Grid>
+            </Grid>
+            
+            {/* <div className="doughnutCharts" style={{display: 'flex', justifyContent: 'center', marginTop: "30px"}}>
                 <DoughnutChart1/>
                 <DoughnutChart2/>
-            </div>
+            </div> */}
         </div>
     )
 }

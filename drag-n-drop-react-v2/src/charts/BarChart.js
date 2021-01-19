@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
@@ -69,7 +70,7 @@ function BarChart() {
     }, [])
 
     return (
-        <div style={{width: "80%", margin: 'auto'}}>
+        <div>
             <Bar data={chartData} options={options}/>
         </div>
     )

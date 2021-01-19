@@ -11,16 +11,18 @@ function Analytics() {
         <div>
             <AppBar/>
             <Grid container style={{display: 'flex'}}>
-                <Grid item xs={0} sm={2}></Grid>
+                <Grid item xs={false} sm={2}></Grid>
                 <Grid item xs={12} sm={8}>
                 <BarChart/>
+                <br/><br/>
                 <BarChart2/>
+                <br/><br/>
                 <Grid container style={{display: 'flex'}}>
                     <DoughnutChart1/>
                     <DoughnutChart2/>
                 </Grid>
                 </Grid>
-                <Grid item xs={0} sm={2}></Grid>
+                <Grid item xs={false} sm={2}></Grid>
             </Grid>
             
             {/* <div className="doughnutCharts" style={{display: 'flex', justifyContent: 'center', marginTop: "30px"}}>

@@ -6,10 +6,11 @@ import { Grid } from '@material-ui/core'
 function BarChart2() {
 
     var chartData
-    // const [ chartData, setChartData ] = useState({})
     var rgb = []
     var borderColor = []
     var backgroundColor = []
+    var maxTick = 6
+    const [ data, setData ] = useState([])
 
     const randomColorGenerate = (responseLength) => {
       for(let i = 0; i < 3; i++){
@@ -23,57 +24,10 @@ function BarChart2() {
       console.log(borderColor)
       console.log(backgroundColor)
     }
-    
-    const dummyData = [
-      {
-        "category": "Motor Insurance",
-        "partners": [
-          {
-            "partner": "Tata AIG",
-            "count": 3
-          },
-          {
-            "partner": "Bajaj Allianz",
-            "count": 2
-          },
-          {
-            "partner": "HDFC ERGO",
-            "count": 2
-          }
-        ]
-      },
-      {
-        "category": "Travel Insurance",
-        "partners": [
-          {
-            "partner": "Tata AIG",
-            "count": 4
-          },
-          {
-            "partner": "HDFC ERGO",
-            "count": 2
-          }
-        ]
-      },
-      {
-        "category": "Health Insurance",
-        "partners": [
-          {
-            "partner": "Tata AIG",
-            "count": 2
-          },
-          {
-            "partner": "HDFC ERGO",
-            "count": 6
-          }
-        ]
-      }
 
-    ]
-
-    const barChart = () => {
+    const barChart = (index) => {
       return (
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={4} key={index}>
             <Bar data={chartData} options={options}/>
         </Grid>
       )
@@ -103,103 +57,45 @@ function BarChart2() {
           }
         ]
       }
+
+      maxTick = Math.max(...boughtCount) + 3
+      console.log("Max Value", maxTick)
       console.log(partners)
       console.log(boughtCount)
       console.log(chartData)
       borderColor = []
       backgroundColor = []
-      return barChart()
+      return barChart(index)
     }
-
-    // const data = {
-    //     labels: ['Motor Insurance', 'Travel Insurance', 'Health Insurance', 'Term Life Insurance', 'General Insurance'],
-    //     datasets: [
-    //       {
-    //         label: 'TATA AIG',
-    //         data: [3, 2, 0, 6, 0],
-    //         borderColor: [
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)'
-    //         ],
-    //         backgroundColor: [
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)',
-    //           'rgba(255, 206, 86, 0.2)'
-    //         ]
-    //       },
-    //       {
-    //         label: 'Bajaj Allianz',
-    //         data: [4, 0, 2, 0, 3],
-    //         borderColor: [
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)'
-    //         ],
-    //         backgroundColor: [
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)',
-    //           'rgba(54, 162, 235, 0.2)'
-    //         ]
-    //       },
-    //       {
-    //         label: 'HDFC ERGO',
-    //         data: [1, 0, 0, 0, 3],
-    //         borderColor: [
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)'
-    //         ],
-    //         backgroundColor: [
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)',
-    //           'rgba(102, 162, 235, 0.2)'
-    //         ]
-    //       },
-    //     ]
-    //   }
     
-      const options = {
-        title: {
-          display: true,
-          text: 'Partners bought in each category'
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                min: 0,
-                max: 6,
-                stepSize: 1
-              }
+    var options = {
+      title: {
+        display: true,
+        text: 'Partners bought in each category'
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              min: 0,
+              max: maxTick,
+              stepSize: 1
             }
-          ]
-        }
+          }
+        ]
       }
-
+    }
+    
+    useEffect(() => {
+      axios.get("http://localhost:9090/api/category/partner/payment/count").then((response) => {
+        setData(response.data)
+      })
+    }, [])
+    
     return (
-        // <div style={{ width: '80%', margin: 'auto', display: 'flex'}}>
-        //   {/* <Bar data={data} options={options}/>
-        //   {console.log("Final Chart Data-->", chartData)} */}
-        //   {dummyData.map((data, index) => chart(data, index))}
-        // </div>
-        // <div style={{ display: 'flex'}}>
-        //   {dummyData.map((data, index) => chart(data, index))}
-        // </div>
         <Grid container style={{display: 'flex'}}>
-          {dummyData.map((data, index) => chart(data, index))}
+          {typeof data !== undefined && data.map((data, index) => chart(data, index))}
+          {/* {dummyData.map((data, index) => chart(data, index))} */}
         </Grid>
     )
 }
